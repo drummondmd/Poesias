@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<%-include("partials/header.ejs")%>
+
+
+
+    <div class="container">
+        <form action="/submit-poetry" method="post">
+            <label for="title" >Titulo da Poesia </label><br>
+            <input type="text" name="title"> <br>
+            <label for="poetry">Corpo do poema</label><br>
+            <textarea name="poetry" id="" cols="30" rows="10" required placeholder="Insira o poema aqui"></textarea><br>
+            <input type="submit" value="Enviar Poesia"><br>
+
+        </form>
+
+    </div>
+
+
+<%-include("partials/footer.ejs")%>
