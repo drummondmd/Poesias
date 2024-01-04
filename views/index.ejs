@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <%-include("partials/header.ejs")%>
 
+<% if(locals.poetry =! "[]"){ %>
+    <h1>Poesias</h1>
+<%    poetry.forEach(function(elem){%>
+        <h4>Titulo: <%=poetry.title[i]%></h4>
+<%    })%>
+<%console.log("FE if true " + poetry)%>
+
+<%}else{%>
+    <%console.log("FE if false " + locals.poetry)%>
+<h1>Ainda sem poesias</h1>
+<%}%>
 
 
 <%-include("partials/footer.ejs")%>
