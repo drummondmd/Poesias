@@ -1,0 +1,16 @@
+#hero{
+    background-image: url("img/hero.jpg") ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: aliceblue;
+    height: 30vw;
+}
+
+#hero>div>h1{
+    color: aliceblue;
+}
+
+.poetry-title{
+    background-color: beige;
+}

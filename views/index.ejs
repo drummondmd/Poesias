@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <%-include("partials/header.ejs")%>
 
-<section id="hero">
-    <div class="px-4 py-5 my-5 text-center" >
-        <img class="d-block mx-auto mb-4" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCwo8Naeo8SqdpAOQhS25NuWxgL62ODZmiTJHC3glFQw&s" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold text-body-emphasis">Bem vindo as poesias</h1>
+<section id="hero" class="mb-4">
+    <div class="px-4 py-5 my-5 text-center h-50 mb-"  >
+        <!-- <h1 class="display-5 fw-bold ">Bem vindo as poesias</h1> -->
         <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">Texto descrevendo brevemente o site.</p>
+          <!-- <p class="lead mb-4">Texto descrevendo brevemente o site.</p> -->
         </div>
       </div>
-      <div class="b-example-divider"></div>
+</section>
+<div class="b-example-divider"></div>
+
 
 <div class="container">
     <div class="row">
 
-        <% if(locals.poetrydata != []){ %>
-            <% console.log(poetrydata.title)%>
+        <% if(locals.poetrydata.length >0){ %>
         <%    poetrydata.forEach(function(elem,index){%>
-            <div class="col">
-                <a href="/poetrybody/<%=index%>" id="link"+index>
+            <div class="col-lg-6 poetry-title text-center" >
+                <a href="/poetrybody/<%=index%>">
                     <h4><%=elem.title%></h4>
-                    <% let poetChoose = { i:index }  %>
-                    <p><%= index %> </p>
                 </a>
                 <p>Autor: <%=elem.autor%></p>
             </div>
@@ -33,7 +31,6 @@
 
 
 <%}else{%>
-    <%console.log("FE if false " + locals.poetrydata)%>
 <h1>Ainda sem poesias</h1>
 <%}%>
 
