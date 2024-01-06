@@ -6,21 +6,29 @@ import ejs from "ejs";
 ///const
 const port = 3000;
 const app = express();
+
 //middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 //global variables
 
-let poetry = [];
+let poetry = [{
+    title: "Bleh",
+    autor: "Marcelo",
+    body:"A poesia é essa..."
+},
+{
+    title: "Bloh",
+    autor: "Julia"
+
+}];
 
 //ao entrar no servidor renderizar index
 app.get("/", (req, res) => {
-const obj = Object.assign({},poetry)
-console.log(obj)
-console.log(poetry)
+console.log("Server" + poetry)
 
-res.render("index.ejs",poetry);
+res.render("index.ejs",{poetrydata: poetry});
 });
 
 //checando se login é valido para postar poesia
@@ -33,17 +41,28 @@ app.post("/check", (req, res) => {
   }
 });
 
-//teste
+//Inscrição de novas poesias
 
 app.post("/submit", (req, res) => {
-  //res.render("submit.ejs")
   const poem = req.body;
   poetry.push(poem);
-  console.log(poetry)
   res.redirect("/")
-  //res.render("index.ejs")
 });
 
+
+/// teste
+
+app.get("/poetrybody/[0-999]",(req,res)=>{
+    const choose =req.path.slice(-1);
+    const poetryC = poetry[choose]
+    console.log(poetryC);
+    //res.send("Ok")
+
+    res.render("poetry",{data:choose})
+
+    // console.log(req);
+   //console.log(req.body);
+})
 
 //final do teste
 
