@@ -4,15 +4,15 @@
 
 
 
-    <div class="container">
+    <div class="container d-flex mb-3">
         <form action="/submit" method="post">
-            <label for="title" >Titulo da Poesia </label><br>
-            <input type="text" name="title"> <br>
-            <label for="title" >Autor da Poesia </label><br>
-            <input type="text" name="autor"> <br>
-            <label for="poetry">Corpo do poema</label><br>
-            <textarea name="body" id="" cols="30" rows="10" required placeholder="Insira o poema aqui"></textarea><br>
-            <input type="submit" value="Enviar Poesia"><br>
+            <label for="title" class="form-label" >Titulo da Poesia </label><br>
+            <input type="text" name="title" required class="form-control"> <br>
+            <label for="title" class="form-label" >Autor da Poesia </label><br>
+            <input type="text" name="autor" required class="form-control"> <br>
+            <label for="poetry" class="form-label">Corpo do poema</label><br>
+            <textarea name="body" id="" cols="50" rows="20" wrap="hard" resize="none" required placeholder="Insira o poema aqui" class="form-control"></textarea><br>
+            <input type="submit" value="Enviar Poesia" class="btn btn-primary"><br>
 
         </form>
 

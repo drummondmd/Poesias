@@ -13,7 +13,11 @@ app.use(express.static("public"));
 
 //global variables
 
-let poetry = [];
+let poetry = [{
+  title: 'Blah',
+  autor: 'Marcelo',
+  body: 'Testando\r\nquebra\r\nde \r\nlinhas'
+}];
 
 //ao entrar no servidor renderizar index
 app.get("/", (req, res) => {
@@ -40,6 +44,7 @@ app.post("/check", (req, res) => {
 app.post("/submit", (req, res) => {
   const poem = req.body;
   poetry.push(poem);
+  console.log(poem.body)
   res.redirect("/")
 });
 
@@ -48,8 +53,7 @@ app.post("/submit", (req, res) => {
 
 app.get("/poetrybody/[0-999]",(req,res)=>{
     const choose =req.path.slice(-1);
-    const poetryC = poetry[choose]
-
+    const poetryC = poetry[choose];
     res.render("poetry.ejs",{data:poetryC})
 
 })

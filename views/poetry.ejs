@@ -1,9 +1,21 @@
 <!DOCTYPE html>
+<head>
+    <style>
+        .poetry-body{
+        background: #fff;
+        border: 1px solid #e4e1dd;
+        border-radius: 10px;
+        }
+    </style>
+</head>
+
 <%-include("partials/header.ejs")%>
 
-<div class="container">
+
+<div class="container poetry-body d-block justify-content-center py-3 m-5">
     <h2><%= data["title"]%></h2>
-    <p><%=data["body"]%></p>
+    <p style="white-space: pre-wrap"><%-data["body"]%></p><br>
+    <p class="fst-italic"><%=data["autor"]%></p>
 
 </div>
 
