@@ -49,7 +49,7 @@ app.post("/submit", (req, res) => {
 });
 
 
-/// teste
+/// renderizando poesia certa na pagina
 
 app.get("/poetrybody/[0-999]",(req,res)=>{
     const choose =req.path.slice(-1);
@@ -58,7 +58,19 @@ app.get("/poetrybody/[0-999]",(req,res)=>{
 
 })
 
-//final do teste
+app.delete("/poetrybody/[0-999]",(req,res)=>{
+  const choose =req.path.slice(-1);
+  const poetryC = poetry[choose];
+  //res.render("poetry.ejs",{data:poetryC})
+
+})
+
+
+//deletando
+
+app.delete("/",(req,res)=>{
+
+})
 
 //listening port
 app.listen(port, (req) => {
