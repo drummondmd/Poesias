@@ -2,40 +2,55 @@
 import express from "express";
 import bodyParser from "body-parser";
 import ejs from "ejs";
+import axios from "axios";
 
 ///const
 const port = 3000;
 const app = express();
+const API_URL = "http://localhost:4000"
 
 //middlewarehe
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-//global variables
-
-let poetry = [{
-  title: 'Blah',
-  autor: 'Marcelo',
-  body: 'Testando\r\nquebra\r\nde \r\nlinhas'
-}];
-
-//ao entrar no servidor renderizar index
-app.get("/", (req, res) => {
-
-res.render("index.ejs",{poetrydata: poetry});
+// Route to render the main page
+app.get("/", async (req, res) => {
+  try {
+    const response = await axios.get(`${API_URL}/poems`);
+    console.log(response);
+    res.render("index.ejs", { poetry: response.data });
+  } catch (error) {
+    res.status(500).send({ message: "Error fetching posts" });
+  }
 });
 
+//renderizando poesia especifica
+app.get("/poetrybody/:id", async (req, res) => {
+    try {
+    const response = await axios.get(`${API_URL}/poems/${req.params.id}`);
+    console.log(response);
+    res.render("poetry.ejs", { poetry: response.data });
+  } catch (error) {
+    res.status(500).send({ message: "Error fetching posts" });
+  }
+});
+
+//area de login
 app.get("/check",(req,res)=>{
     res.render("login.ejs")
-
 })
+
 //checando se login é valido para postar poesia
-app.post("/check", (req, res) => {
+app.post("/check",async (req, res) => {
   const resposta = req.body["password"];
   if (resposta === "123456") {
-    res.render("submit.ejs");
+    const response = await axios.get(`${API_URL}/poems`);
+    console.log(response)
+    res.render("editor.ejs",{poetry: response.data});
   } else {
-    res.render("index.ejs");
+    const response = await axios.get(`${API_URL}/poems`);
+    res.render("index.ejs",{poetry: response.data});
+    console.log("Não credenciado")
   }
 });
 
@@ -58,7 +73,13 @@ app.get("/poetrybody/[0-999]",(req,res)=>{
 
 })
 
-app.delete("/poetrybody/[0-999]",(req,res)=>{
+/// Delete
+
+app.delete("/delete/:id",(req,res)=>{
+  const id = req.params.id
+  console.log(id)
+
+
   const choose =req.path.slice(-1);
   const poetryC = poetry[choose];
   //res.render("poetry.ejs",{data:poetryC})
