@@ -13,15 +13,17 @@
 
 
 <div class="container">
-    <div class="row">
+    <div class="row g-1 "> 
 
         <% if(locals.poetry){ %>
         <%    poetry.forEach(function(elem,index){%>
-            <div class="col-lg-6 poetry-title text-center" >
+            <div class="col poetry-title text-center m-1" >
                 <a href="/poetrybody/<%=elem.id%>">
                     <h4><%=elem.title%></h4>
                 </a>
-                <p>Autor: <%=elem.autor%></p>
+                <p>Autor: <%=elem.author%></p>
+                <p><%=elem.date%></p>
+                <p><%=elem.likes%> likes.</p>
             </div>
 
         <%    })%>       

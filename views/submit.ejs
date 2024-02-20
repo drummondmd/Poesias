@@ -2,6 +2,26 @@
 
 <%-include ("partials/header.ejs")%>
 
+<%if(locals.poetry){%>
+
+    <div class="container d-flex mb-3">
+        <form action="/edit" method="post">
+            <label class="form-label" for="id">ID - Não modificável</label>
+            <input type="text" class="form-control" name="id" readonly value=<%=poetry.id%>>
+            <label for="title" class="form-label" >Titulo da Poesia </label><br>
+            <input type="text" name="title" required class="form-control" value=<%=poetry.title%>> <br>
+            <label for="title" class="form-label" >Autor da Poesia </label><br>
+            <input type="text" name="author" required class="form-control" value=<%=poetry.author%>> <br>
+            <label for="poetry" class="form-label">Corpo do poema</label><br>
+            <textarea name="body" id="" cols="50" rows="20" wrap="hard" resize="none" class="form-control"><%=poetry.body%></textarea><br>
+            <input type="submit" value="Editar Poesia" class="btn btn-primary"><br>
+
+        </form>
+
+    </div>
+
+<%}else{%>
+
 
 
     <div class="container d-flex mb-3">
@@ -9,7 +29,7 @@
             <label for="title" class="form-label" >Titulo da Poesia </label><br>
             <input type="text" name="title" required class="form-control"> <br>
             <label for="title" class="form-label" >Autor da Poesia </label><br>
-            <input type="text" name="autor" required class="form-control"> <br>
+            <input type="text" name="author" required class="form-control"> <br>
             <label for="poetry" class="form-label">Corpo do poema</label><br>
             <textarea name="body" id="" cols="50" rows="20" wrap="hard" resize="none" required placeholder="Insira o poema aqui" class="form-control"></textarea><br>
             <input type="submit" value="Enviar Poesia" class="btn btn-primary"><br>
@@ -18,5 +38,6 @@
 
     </div>
 
+<%}%>
 
 <%- include("partials/footer.ejs")%>
