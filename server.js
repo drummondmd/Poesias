@@ -16,18 +16,18 @@ app.use(express.static("public"));
 
 let poetry = [{
     id:1,
-    title: 'Blah',
-    author: 'Marcelo',
-    body: 'Testando\r\nquebra\r\nde \r\nlinhas',
+    title: 'Universo',
+    author: 'Clarice Pacheco',
+    body: 'Quando penso no universo:\r\n sua complexidade e imensidão,\r\n penso nos meus problemas e no quão pequenos eles são.',
     date: "17/02/2024",
     likes:0
   },{
     id:2,
-    title: 'Bleh',
-    author: 'Marcelo',
-    body: 'Segundo\r\nquebra\r\nde \r\nlinhas',
-    date: "17/03/2024",
-    likes:5
+    title: 'Devaneios',
+    author: 'Tata In poesias',
+    body: "Vivo assim,\r\n entre tropeços e ganhos.\r\n Vivo em um mundo só meu,\r\n amo canções, versos e rimas.\r\n Perco-me em meus devaneios.",
+    date: "20/02/2024",
+    likes:0
   }
 
 ];
