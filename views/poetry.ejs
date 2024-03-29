@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<head>
-    <style>
-        .poetry-body{
-        background: #fff;
-        border: 1px solid #e4e1dd;
-        border-radius: 10px;
-        }
-        .share-wrapper {
-                position: relative;
-                display: inline-block;
-                width: 100%;
-                padding: 0;
-                border-top: 1px solid #e4e1dd;
-                
-            }
-    </style>
-</head>
 
 <%-include("partials/header.ejs")%>
 
 
-<div class="container">
+<div class="container" id="display">
     <div class="row">
         <div class="col-6 poetry-body">
-            <h2><%= poetry["title"]%></h2>
-            <p style="white-space: pre-wrap"><%-poetry["body"]%></p><br>
-            <p class="fst-italic"><%=poetry["author"]%></p>
+            <h2><%= poetry["titulo"]%></h2>
+            <p style="white-space: pre-wrap"><%-poetry["corpo"]%></p><br>
+            <p class="fst-italic"><%=poetry["autor"]%></p>
        <!-- aba de curtir e apagar-->
        <div class="share-wrapper py-2 ">
           <div class=" d-flex justify-content-end">
-            <%=poetry.date%>
+            <% let dt =poetry.data%>
+            <%= dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear() %>
+
 
             <button class="btn">
                 <svg id="heart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
@@ -44,11 +28,5 @@
 </div>
 
 
-
 <%-include("partials/footer.ejs")%>
-<script>
-    $("#heart" ).on( "click", function() {
-        $("#heart").attr("fill", "red"); 
-    // tentar acrescentar curtida a base de dados depois
-    } );
-    </script>
+

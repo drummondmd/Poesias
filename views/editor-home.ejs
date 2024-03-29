@@ -1,0 +1,34 @@
+<%-include("partials/header.ejs")%>
+
+<% if(locals.poetry) { %>
+    <% poetry.forEach((elem)=>{ %>
+        <%= elem.id %>
+        <%= elem.titulo %>
+        <%= elem.autor %>
+        <%= elem.corpo %>
+        <%= elem.data %>
+        <%= elem.likes %>
+
+
+
+        <% }) %>
+
+
+
+
+
+<% }else{%>
+    <p>
+    Ainda sem poesias
+    </p>
+
+    <% } %>
+
+
+
+
+
+
+
+<%-include("partials/footer.ejs")%>
+

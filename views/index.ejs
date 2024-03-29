@@ -18,11 +18,16 @@
         <% if(locals.poetry){ %>
         <%    poetry.forEach(function(elem,index){%>
             <div class="col poetry-title text-center m-1" >
-                <a href="/poetrybody/<%=elem.id%>">
-                    <h4><%=elem.title%></h4>
+                <a href="/poesias/<%=elem.id%>">
+                    <h4><%=elem.titulo%></h4>
                 </a>
-                <p>Autor: <%=elem.author%></p>
-                <p><%=elem.date%></p>
+                <p>Autor: <%=elem.autor%></p>
+                <% let dt =elem.data%>
+                <p>
+                    <%= dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear() %>
+
+                </p>
+                
                 <p><%=elem.likes%> likes.</p>
             </div>
 

@@ -1,0 +1,27 @@
+<%-include ("partials/header.ejs")%>
+
+<button class="btn" id="new-btn">Nova</button>
+<button class="btn" id="edit-btn">Editar atual  </button>
+
+<section id="new" style="display: none;">
+    <div class="container d-flex mb-3">
+        <form action="/submit" method="post">
+            <label for="titulo" class="form-label" >Titulo da Poesia </label><br>
+            <input type="text" name="titulo" required class="form-control"> <br>
+            <label for="autor" class="form-label" >Autor da Poesia </label><br>
+            <input type="text" name="autor" required class="form-control"> <br>
+            <label for="corpo" class="form-label">Corpo do poema</label><br>
+            <textarea name="corpo" id="" cols="50" rows="20" wrap="hard" resize="none" required placeholder="Insira o poema aqui" class="form-control"></textarea><br>
+            <input type="submit" value="Enviar Poesia" class="btn btn-primary"><br>
+
+        </form>
+
+    </div>
+</section>
+<section id="edit" style="display: none;">
+editar
+</section>
+
+
+
+<%-include ("partials/footer.ejs")%>

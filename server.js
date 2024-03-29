@@ -26,7 +26,7 @@ let poetry = [{
     title: 'Devaneios',
     author: 'Tata In poesias',
     body: "Vivo assim,\r\n entre tropeços e ganhos.\r\n Vivo em um mundo só meu,\r\n amo canções, versos e rimas.\r\n Perco-me em meus devaneios.",
-    date: "20/02/2024",
+    date: "20/02cd/2024",
     likes:0
   }
 
