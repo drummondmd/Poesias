@@ -93,6 +93,83 @@ try {
 
 })
 
+/// get-method to edit specific poetry
+app.get("/edit/:poetryId", async (req,res)=>{
+  try {
+    const result = await db.query("SELECT * FROM poesias WHERE id = $1",[req.params.poetryId])
+    const poetryC= result.rows[0]
+    if(poetryC){
+      res.render("edit.ejs",{
+        poetry: poetryC
+      })
+    }else{
+      res.redirect("/")
+    }
+  } catch (error) {
+    console.log(error)
+    res.redirect("/")    
+  }
+})
+
+///post method to uptade poetry
+app.post("/edit",async (req,res)=>{
+  const today = Date.now()
+  const id = parseInt(req.body.id)
+try {
+  const result = await
+   db.query("UPDATE poesias SET titulo = ($1),autor = ($2),corpo = ($3),data= ($4) WHERE id = ($5) RETURNING *;",[req.body.titulo,req.body.autor,req.body.corpo,new Date(today),id])
+   res.render("poetry.ejs",{
+    poetry: result.rows[0]
+  })
+  
+} catch (error) {
+  console.log(error)
+  res.send("Algum erro aconteceu")
+  
+}
+
+})
+
+/// deleting poetry
+
+app.post("/delete", async (req, res) => {
+  const id = req.body.deleteItemId;
+  try {
+    await db.query("DELETE FROM poesias WHERE id = $1", [id]);
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+/// computing likes
+
+app.post( "/likes",async (req,res)=>{
+  const id = parseInt(req.body.id)
+  try {
+    const result = await db.query("SELECT * FROM poesias WHERE id = $1",[id])
+    const poetry = result.rows[0]
+    let actualLikes =  poetry.likes
+    actualLikes ++
+    try {
+      db.query("UPDATE poesias SET likes = ($1) WHERE id = ($2);",[actualLikes,id])
+      res.sendStatus(200)
+     
+    } catch (error) {
+      console.log(error)
+      res.send("Algum erro aconteceu")
+      
+    }    
+  } catch (error) {
+    console.log(error)
+    res.send("Algum erro aconteceu")
+
+  }
+})
+
+
+
 
 
 //listening port

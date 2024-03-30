@@ -1,7 +1,18 @@
 <%-include ("partials/header.ejs")%>
 
-<button class="btn" id="new-btn">Nova</button>
-<button class="btn" id="edit-btn">Editar atual  </button>
+
+<div class="container">
+
+<div class="m-2">
+    <button class="btn btn-outline-primary" id="new-btn">Nova</button>
+<button class="btn btn-outline-primary" id="edit-btn">Editar ou excluir atuais  </button>
+<a href="/editor"><button class="btn btn-outline-primary" >Voltar  </button></a>
+
+</div>
+    
+
+
+
 
 <section id="new" style="display: none;">
     <div class="container d-flex mb-3">
@@ -12,15 +23,51 @@
             <input type="text" name="autor" required class="form-control"> <br>
             <label for="corpo" class="form-label">Corpo do poema</label><br>
             <textarea name="corpo" id="" cols="50" rows="20" wrap="hard" resize="none" required placeholder="Insira o poema aqui" class="form-control"></textarea><br>
-            <input type="submit" value="Enviar Poesia" class="btn btn-primary"><br>
+            <input type="submit" value="Enviar Poesia" class="btn btn-outline-primary"><br>
 
         </form>
 
     </div>
 </section>
 <section id="edit" style="display: none;">
-editar
-</section>
+    <div class="container">
+        <div class="row g-1 "> 
+    
+            <% if(locals.poetry){ %>
+            <%    poetry.forEach(function(elem,index){%>
+                <div class="col poetry-title text-center m-1" >
+                    <a href="/edit/<%=elem.id%>">
+                        <h4><%=elem.titulo%></h4>
+                    </a>
+                    <p>Autor: <%=elem.autor%></p>
+                    <% let dt =elem.data%>
+                    <p>
+                        <%= dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear() %>
+    
+                    </p>
+                    
+                    <p><%=elem.likes%> likes.</p>
+                    <form action="/delete" method="post">
+                        <input id="delete" type="checkbox" onchange="this.form.submit()" name="deleteItemId" hidden="true" value="<%= elem.id %>">
+                        <label for="delete" class="btn btn-outline-dange">Delete</label>
+                      </form>
+                </div>
+    
+            <%    })%>      
+            <%}else{%>
+                <h1>Ainda sem poesias</h1>
+                <%}%>
+                 
+    
+        </div>
+    </div></section>
+
+
+
+
+
+</div>
+
 
 
 

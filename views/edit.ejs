@@ -1,0 +1,22 @@
+
+<%-include("partials/header.ejs")%>
+
+<div class="container d-flex mb-3">
+    <form action="/edit" method="post">
+        <label class="form-label" for="id">ID - Não modificável</label>
+        <input type="text"  class="form-control" name="id" readonly value=<%=poetry.id%>>
+        <label for="titulo" class="form-label" >Titulo da Poesia </label><br>
+        <input type="text" maxlength="100" name="titulo"  required class="form-control" value=<%=poetry.titulo%>> <br>
+        <label for="autor" class="form-label" >Autor da Poesia </label><br>
+        <input type="text" name="autor" required class="form-control" value=<%-poetry.autor%>> <br>
+        <label for="corpo" class="form-label">Corpo do poema</label><br>
+        <textarea name="corpo" id="" cols="50" rows="20" wrap="hard" resize="none" class="form-control"><%=poetry.corpo%></textarea><br>
+        <input type="submit" value="Editar Poesia" class="btn btn-outline-primary"><br>
+
+    </form>
+
+</div>
+
+
+<%-include("partials/footer.ejs")%>
+

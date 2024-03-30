@@ -12,23 +12,21 @@
 <div class="b-example-divider"></div>
 
 
-<div class="container">
-    <div class="row g-1 "> 
+<div class="container text-center p-0">
+    <div class="row g-2 row-cols-2 "> 
 
         <% if(locals.poetry){ %>
         <%    poetry.forEach(function(elem,index){%>
-            <div class="col poetry-title text-center m-1" >
-                <a href="/poesias/<%=elem.id%>">
-                    <h4><%=elem.titulo%></h4>
-                </a>
-                <p>Autor: <%=elem.autor%></p>
-                <% let dt =elem.data%>
-                <p>
-                    <%= dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear() %>
+            <div class="col"  >
+                <div class="m-2 poetry-title">
+                    <a href="/poesias/<%=elem.id%>">
+                        <h4><%=elem.titulo%></h4>
+                    </a>
+                    <p>Autor: <%=elem.autor%></p>
+                    <p><%=elem.likes%> likes.</p>
 
-                </p>
-                
-                <p><%=elem.likes%> likes.</p>
+                </div>
+     
             </div>
 
         <%    })%>       

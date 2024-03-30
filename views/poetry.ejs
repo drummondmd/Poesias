@@ -5,7 +5,7 @@
 <div class="container" id="display">
     <div class="row">
         <div class="col-6 poetry-body">
-            <h2><%= poetry["titulo"]%></h2>
+            <h2 class="h2 my-2"><%= poetry["titulo"]%></h2>
             <p style="white-space: pre-wrap"><%-poetry["corpo"]%></p><br>
             <p class="fst-italic"><%=poetry["autor"]%></p>
        <!-- aba de curtir e apagar-->
@@ -15,8 +15,8 @@
             <%= dt.getDate()  + "/" + (dt.getMonth() + 1) + "/" +  dt.getFullYear() %>
 
 
-            <button class="btn">
-                <svg id="heart" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <button class="btn heart" id=<%-poetry.id%>>
+                <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"></path>
                   </svg>
             </button>
